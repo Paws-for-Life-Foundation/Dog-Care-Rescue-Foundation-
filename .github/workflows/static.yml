@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Care & Rescue Foundation</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-color: #f8f9fa; }
+        header { background: #ff6f61; color: white; padding: 20px; font-size: 28px; font-weight: bold; }
+        section { padding: 20px; }
+        .donate { background: #ffcc00; padding: 15px; font-size: 20px; }
+        .contact { background: #4caf50; color: white; padding: 15px; }
+        footer { background: #333; color: white; padding: 10px; margin-top: 20px; }
+        img { width: 80%; max-width: 600px; border-radius: 10px; margin: 10px 0; }
+        video { width: 80%; max-width: 600px; border-radius: 10px; margin: 10px 0; }
+        .bold-text { font-weight: bold; font-size: 22px; }
+    </style>
+</head>
+<body>
+    <header>
+        Dog Care & Rescue Foundation 🐶❤️ - Malaysia, Indonesia & Pakistan
+    </header>
+    
+    <section>
+        <h2 class="bold-text">Charity Open in 2035 - Need Your Support!</h2>
+        <p>We have expanded our rescue mission to <b>Pakistan, Indonesia, and Malaysia</b>. Over <b>1,000+ dogs</b> are fed daily across these countries. Your support helps us continue our work! 🐶🙏</p>
+    </section>
+    
+    <section>
+        <h2>Pakistan - Islamabad & Rawalpindi</h2>
+        <img src="https://source.unsplash.com/600x400/?dog-Pakistan" alt="Dogs in Pakistan">
+        <p>We are actively feeding and rescuing stray and injured dogs in Islamabad & Rawalpindi.</p>
+    </section>
+    
+    <section>
+        <h2>Indonesia - Surabaya & Jakarta</h2>
+        <img src="https://source.unsplash.com/600x400/?dog-Indonesia" alt="Dogs in Indonesia">
+        <p>Providing medical care and shelter to stray dogs in Surabaya & Jakarta.</p>
+    </section>
+    
+    <section>
+        <h2>Malaysia - Johor Bahru</h2>
+        <img src="https://source.unsplash.com/600x400/?dog-Malaysia" alt="Dogs in Malaysia">
+        <p>Our rescue center in Johor Bahru takes care of 300+ dogs in need.</p>
+    </section>
+    
+    <section class="donate">
+        <h2>Support Our Mission</h2>
+        <img src="https://source.unsplash.com/600x400/?dog-care" alt="Dog Care">
+        <p>Your donations help us feed, shelter, and treat rescued dogs. Every contribution makes a difference! 🙏</p>
+        <p><strong>Touch 'n Go eWallet:</strong> 131645024190</p>
+        <p><strong>Bank Account:</strong> [Your Bank Name & Account Number]</p>
+        <p><strong>PayPal:</strong> [Your PayPal Link]</p>
+    </section>
+    
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p><strong>Name:</strong> Muhammad Shahbaz</p>
+        <p><strong>Email:</strong> [Your Email]</p>
+        <p><strong>Phone:</strong> 01161471195</p>
+        <p>Follow us on social media: [Your Social Links]</p>
+    </section>
+    
+    <footer>
+        &copy; 2035 Dog Care & Rescue Foundation - Pakistan | Indonesia | Malaysia | All Rights Reserved
+    </footer>
+</body>
+</html>
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
